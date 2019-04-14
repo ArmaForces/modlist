@@ -8,12 +8,12 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 export const getDownloadableModsets = () =>
-  fetch(`${BASE_URL}/modsets/downloadable.json`)
+  fetch(`${BASE_URL}/modsets/downloadable.json?${Date.now()}`)
   .then((resp) => resp.json())
 
 
 export const getModsetData = modset =>
-  fetch(`${BASE_URL}/modsets/default.csv`)
+  fetch(`${BASE_URL}/modsets/default.csv?${Date.now()}`)
   .then((resp) => resp.text())
   .then((csvText) => Papa.parse(csvText.trim(), {
     header: true,

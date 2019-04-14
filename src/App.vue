@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="#">ArmaForces Modlist</a>
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <form class="form-inline my-2 my-lg-0">
