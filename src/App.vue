@@ -113,7 +113,8 @@ export default {
   watch: {
     selectedModset(val) {
       this.mods = []
-      this.getModset(val)
+      if (val)
+        this.getModset(val)
     }
   },
   computed: {
