@@ -1,0 +1,21 @@
+image: node
+
+before_script:
+  - npm install
+
+cache:
+  paths:
+    - node_modules/
+
+pages:
+  script:
+    - npm run build
+    - mv public public-vue
+    - mkdir public
+    - mv index.html public/
+    - mv dist/ public/dist/
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
