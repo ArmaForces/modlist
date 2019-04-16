@@ -1,9 +1,7 @@
 import Papa from 'papaparse';
 
-let BASE_URL;
-if (process.env.NODE_ENV === 'production') {
-  BASE_URL = `http://armaforces.ddns.net:8888/`
-} else {
+let BASE_URL = `http://armaforces.ddns.net:8888/`;
+if (process.env.NODE_ENV !== 'production') {
   BASE_URL = `http://localhost:8080/`
 }
 
