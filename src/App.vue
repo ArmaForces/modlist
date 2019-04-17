@@ -3,18 +3,26 @@
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <a class="navbar-brand" href="#">ArmaForces Modlist</a>
 
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <form class="form-inline my-2 my-lg-0">
-          <b-form-select v-model="selectedModset" :options="modsets"></b-form-select>
-          <b-button
-            variant="success"
-            :disabled="!mods.length"
-            @click="$refs.launcherHtml.download()"
-          >Download</b-button>
-        </form>
+      <div>
+
       </div>
     </nav>
     <div class="container">
+      <section v-if="mods.length" class="d-flex justify-content-between">
+          <!-- Change button -->
+          <b-button
+            @click="selectedModset = null"
+          >
+            < change modset
+          </b-button>
+          <!-- Download button -->
+          <b-button
+            variant="success"
+            @click="$refs.launcherHtml.download()"
+          >
+            Download
+          </b-button>
+      </section>
       <!-- Parsing errors -->
       <div v-if="parsingErrors.length">
         Errors:
@@ -27,7 +35,13 @@
       <!-- Mods -->
       <main v-if="selectedModset">
         <b-tabs card v-if="mods.length">
-          <b-tab title="Optional">
+          <b-tab>
+            <template slot="title">
+              Optional
+              <b-badge pill variant="secondary">
+                {{ optionalMods.filter(x => x.isEnabled).length }}/{{ optionalMods.length }}
+              </b-badge>
+            </template>
             <!-- Optional mods table -->
             <ModsTable
               key="optional"
@@ -35,13 +49,22 @@
               @update-mod-state="enableMod"
             ></ModsTable>
           </b-tab>
-          <b-tab title="Required">
+          <b-tab>
+            <template slot="title">
+              Required
+              <b-badge pill variant="secondary">
+                {{ requiredMods.length }}
+              </b-badge>
+            </template>
             <!-- Required mods table -->
             <ModsTable
               key="required"
               :mods="requiredMods"
             ></ModsTable>
           </b-tab>
+          <div>
+            Test
+          </div>
         </b-tabs>
         <div v-else style="display:flex; justify-content: center;">
           <b-spinner
@@ -51,8 +74,18 @@
           ></b-spinner>
         </div>
       </main>
-      <div v-else style="display:flex; justify-content: center;">
-        <h2>Please select modlist</h2>
+      <!-- Modset selection -->
+      <div v-else class="row">
+        <div class="col-12 d-flex justify-content-center">
+          <h2>Please select modlist</h2>
+        </div>
+        <div class="col-12 d-flex justify-content-center">
+          <div>
+          <b-button block v-for="modset in modsets" :key="modset" @click="selectedModset = modset">
+            {{ modset }}
+          </b-button>
+          </div>
+        </div>
       </div>
     </div>
     <!-- Template -->
@@ -83,13 +116,7 @@ export default {
     }
   },
   async mounted() {
-    const modsets = await api.getDownloadableModsets()
-    let modsetOptions = [{ value: null, text: 'Please select some modset' }]
-      .concat(
-        modsets.map(x => ({ value: x, text: x }))
-      )
-
-    this.modsets = modsetOptions
+    this.modsets = await api.getDownloadableModsets()
   },
   methods: {
     async getModset(modset) {
