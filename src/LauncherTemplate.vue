@@ -7,6 +7,7 @@
       <meta name="generator" content="ArmaForces - https://www.armaforces.pl/" />
       <title>{{ title }}</title>
       <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css" />
+      <link rel="stylesheet" media="all" href="http://armaforces.maciejewski.cf/launcher.css" />
     </head>
     <body>
       <h1>ArmaForces Mods - <strong>{{ title }}</strong></h1>
@@ -65,7 +66,10 @@ export default {
   },
   computed: {
       template() {
-        return `<?xml version="1.0" encoding="utf-8"?>\n${this.$el.innerHTML}`
+        return `
+        <?xml version="1.0" encoding="utf-8"?>\n
+        ${this.$el.innerHTML}
+        `
       },
 
   }
