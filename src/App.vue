@@ -62,9 +62,6 @@
               :mods="requiredMods"
             ></ModsTable>
           </b-tab>
-          <div>
-            Test
-          </div>
         </b-tabs>
         <div v-else style="display:flex; justify-content: center;">
           <b-spinner
