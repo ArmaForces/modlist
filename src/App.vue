@@ -13,15 +13,13 @@
           <b-button
             @click="selectedModset = null"
           >
-            < change modset
+            &lt; change modset
           </b-button>
           <!-- Download button -->
-          <b-button
-            variant="success"
-            @click="$refs.launcherHtml.download()"
-          >
-            Download
-          </b-button>
+          <Download ref="launcherHtml"
+            :title="selectedModset"
+            :mods="mods.filter(x => x.isEnabled)"
+          ></Download>
       </section>
       <!-- Parsing errors -->
       <div v-if="parsingErrors.length">
@@ -85,25 +83,18 @@
         </div>
       </div>
     </div>
-    <!-- Template -->
-    <div v-show="false" v-if="selectedModset">
-      <LauncherTemplate ref="launcherHtml"
-        :title="selectedModset"
-        :mods="mods.filter(x => x.isEnabled)"
-      ></LauncherTemplate>
-    </div>
   </div>
 </template>
 
 <script>
-import LauncherTemplate from './LauncherTemplate'
+import Download from './Download'
 import ModsTable from './ModsTable'
 import * as api from './api'
 import * as mods from './mods'
 
 export default {
   name: 'app',
-  components: { LauncherTemplate, ModsTable },
+  components: { Download, ModsTable },
   data () {
     return {
       selectedModset: null,

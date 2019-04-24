@@ -67,6 +67,10 @@ module.exports = {
           name: '[name].[ext]?[hash]'
         }
       },
+      {
+        test: /\.handlebars$/i,
+        use: 'raw-loader',
+      },
     ]
   },
   resolve: {
