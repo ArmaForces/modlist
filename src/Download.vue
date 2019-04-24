@@ -30,7 +30,7 @@ export default {
     download() {
       let element = document.createElement('a')
       element.setAttribute('href', 'data:text/html;base64,' + encodeURIComponent(btoa(this.template)))
-      element.setAttribute('download', `ArmaForces_${this.title}.html`);
+      element.setAttribute('download', `ArmaForces_${this.getTitle()}.html`);
 
       element.style.display = 'none';
       document.body.appendChild(element);
@@ -38,12 +38,15 @@ export default {
       element.click();
 
       document.body.removeChild(element);
+    },
+    getTitle() {
+      return `${this.title}  ${moment().format('YYYY_MM_DD  HH_mm')}`;
     }
   },
   computed: {
     template() {
       return launcherTemplate({
-        title: `${this.title}  ${moment().format('YYYY_MM_DD  HH_mm')}`,
+        title: this.getTitle(),
         mods: this.mods,
       })
     },
