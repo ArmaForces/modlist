@@ -18,7 +18,7 @@
           <!-- Download button -->
           <Download ref="launcherHtml"
             :title="selectedModset"
-            :mods="mods.filter(x => x.isEnabled)"
+            :mods="clientMods.filter(x => x.isEnabled)"
           ></Download>
       </section>
       <!-- Parsing errors -->
