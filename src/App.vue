@@ -77,8 +77,10 @@
         <div class="col-12 d-flex justify-content-center">
           <div>
             <b-button block v-for="modset in modsets" :key="modset"
+              v-b-tooltip.hover.right.d500="modset === current ? 'Modset used currently on server' : ''"
               @click="selectedModset = modset"
               :variant="modset === current ? 'primary' : 'secondary'"
+
             >
               {{ modset }}
             </b-button>
