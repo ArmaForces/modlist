@@ -19,3 +19,13 @@ export const getModsetData = modset =>
     quoteChar: '"'
   }))
 
+export const getCurrentModset = () =>
+  fetch(`${BASE_URL}/current.txt?${Date.now()}`)
+  .then((resp) => resp.text())
+  .then(current => {
+    // Remove BOM
+    if (current.charCodeAt(0) === 0xFEFF) {
+      current = res.substr(1);
+    }
+    return current.trim()
+  })
