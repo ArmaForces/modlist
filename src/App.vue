@@ -76,9 +76,12 @@
         </div>
         <div class="col-12 d-flex justify-content-center">
           <div>
-          <b-button block v-for="modset in modsets" :key="modset" @click="selectedModset = modset">
-            {{ modset }}
-          </b-button>
+            <b-button block v-for="modset in modsets" :key="modset"
+              @click="selectedModset = modset"
+              :variant="modset === current ? 'primary' : 'secondary'"
+            >
+              {{ modset }}
+            </b-button>
           </div>
         </div>
       </div>
@@ -100,11 +103,13 @@ export default {
       selectedModset: null,
       modsets: [],
       mods: [],
+      current: '',
       parsingErrors: [],
     }
   },
   async mounted() {
     this.modsets = await api.getDownloadableModsets()
+    this.current = await api.getCurrentModset()
   },
   methods: {
     async getModset(modset) {
