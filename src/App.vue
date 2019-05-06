@@ -80,7 +80,7 @@
               v-b-tooltip.hover.right.d500="modset === current ? 'Modset used currently on server' : ''"
               @click="selectedModset = modset"
               :variant="modset === current ? 'primary' : 'secondary'"
-
+              class="text-capitalize"
             >
               {{ modset }}
             </b-button>
