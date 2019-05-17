@@ -10,8 +10,7 @@ cache:
 pages:
   script:
     - npm run build
-    - mv index.html public/
-    - mv dist/ public/dist/
+    - mv dist/ public/
   artifacts:
     paths:
       - public
