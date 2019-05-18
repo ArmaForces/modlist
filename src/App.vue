@@ -41,6 +41,19 @@ export default {
 </script>
 
 <style lang="scss">
+  html, body, #app {
+    height: 100%;
+  }
+
+  #app > nav {
+    height: 56px;
+  }
+
+  #app > main {
+    overflow-y: scroll;
+    height: calc(100% - 56px);
+  }
+
   .logo {
     user-select: none;
   }
