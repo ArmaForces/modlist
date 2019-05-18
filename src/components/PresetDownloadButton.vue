@@ -59,13 +59,13 @@ export default {
   },
   computed: {
     clientMods() {
-      return this.mods;
+      return this.mods.filter(x => x.isEnabled);
     },
     requiredMods() {
       return mods.filterRequired(this.clientMods);
     },
     optionalMods() {
-      return mods.filterOptional(this.clientMods).filter(x => x.isEnabled);
+      return mods.filterOptional(this.clientMods);
     },
   },
 };
