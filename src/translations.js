@@ -4,6 +4,7 @@ export default {
     nav: {
       get: 'Get modset',
       create: 'Create modset',
+      current: 'Modset used currently on server',
     },
     mods: {
       optional: 'Optional',
@@ -26,6 +27,7 @@ export default {
     nav: {
       get: 'Pobierz modlistę',
       create: 'Utwórz modlistę',
+      current: 'Modlista używana obecnie na serwerze',
     },
     mods: {
       optional: 'Opcjonalne',

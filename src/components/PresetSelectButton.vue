@@ -1,7 +1,7 @@
 <template>
   <b-button
       block
-      v-b-tooltip.hover.right.d500="isCurrent ? 'Modset used currently on server' : ''"
+      v-b-tooltip.hover.right.d500="isCurrent ? $t('nav.current') : ''"
       :variant="isCurrent ? 'primary' : 'secondary'"
       class="text-capitalize text-white"
       :class="{ 'font-weight-bold': isCurrent }"
