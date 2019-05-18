@@ -3,7 +3,7 @@
     <!-- Optional tab -->
     <b-tab pills>
       <template slot="title">
-        Optional
+        {{ $t('mods.optional') }}
         <b-badge pill variant="secondary">
           {{ optionalMods.filter(x => x.isEnabled).length }}/{{ optionalMods.length }}
         </b-badge>
@@ -13,7 +13,7 @@
     <!-- Required tab -->
     <b-tab>
       <template slot="title">
-        Required
+        {{ $t('mods.required') }}
         <b-badge pill variant="secondary">
           {{ requiredMods.length }}
         </b-badge>
@@ -25,8 +25,8 @@
       <li class="nav-item align-self-center ml-auto">
         <b-form-input v-model="search"
           size="sm"
-          class="mr-sm-2"
-          placeholder="Search"
+          class="mr-sm-2 d-md-block d-none"
+          :placeholder="$t('search')"
         ></b-form-input>
       </li>
       <li class="nav-item align-self-center">

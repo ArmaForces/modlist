@@ -2,11 +2,12 @@
   <b-dropdown split
     size="sm"
     @click="download(clientMods)"
-    text="Download" class="m-2"
+    :text="$t('download')" class="m-2"
     variant="primary"
+    split-variant="primary"
   >
-    <b-dropdown-item @click="download(requiredMods)">Download required</b-dropdown-item>
-    <b-dropdown-item @click="download(optionalMods)">Download optional</b-dropdown-item>
+    <b-dropdown-item @click="download(requiredMods)">{{ $t('mods.required') }}</b-dropdown-item>
+    <b-dropdown-item @click="download(optionalMods)">{{ $t('mods.optional') }}</b-dropdown-item>
   </b-dropdown>
 </template>
 

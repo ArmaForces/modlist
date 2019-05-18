@@ -3,9 +3,9 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Modname</th>
-        <th scope="col">Include?</th>
-        <th scope="col">Steam ID</th>
+        <th scope="col">{{ $t('mods.table.modname') }}</th>
+        <th scope="col">{{ $t('mods.table.include') }}</th>
+        <th scope="col">{{ $t('mods.table.steam_id') }}</th>
       </tr>
     </thead>
     <tbody>

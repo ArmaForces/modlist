@@ -10,17 +10,18 @@
           <!-- Download -->
           <b-nav-item :to="{ name: 'select-preset' }"
             active-class="active"
-          >Get mods</b-nav-item>
+          >{{ $t('nav.get') }}</b-nav-item>
           <!-- Create  -->
           <b-nav-item :to="{ name: 'modset-create' }"
             active-class="active"
-          >Create modset</b-nav-item>
+          >{{ $t('nav.create') }}</b-nav-item>
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-          <b-nav-item href="https://armaforces.com/">Main page</b-nav-item>
-          <b-nav-item href="https://forum.armaforces.com/">Forum</b-nav-item>
+          <!-- <b-nav-item href="https://armaforces.com/">Main page</b-nav-item> -->
+          <!-- <b-nav-item href="https://forum.armaforces.com/">Forum</b-nav-item> -->
+          <SettingsDropdown></SettingsDropdown>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -31,8 +32,11 @@
 </template>
 
 <script>
+import SettingsDropdown from '@/components/SettingsDropdown';
+
 export default {
   name: 'App',
+  components: { SettingsDropdown },
 };
 </script>
 

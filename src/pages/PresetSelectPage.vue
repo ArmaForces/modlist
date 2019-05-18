@@ -5,7 +5,7 @@
   <!-- Modsets List -->
   <div v-else class="row">
     <div class="col-12 d-flex justify-content-center">
-      <h2>Please select modlist</h2>
+      <h2>{{ $t('mods.select') }}</h2>
     </div>
     <div class="col-12 d-flex justify-content-center">
       <div>
