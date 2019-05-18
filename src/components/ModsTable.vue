@@ -3,9 +3,9 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Modname</th>
-        <th scope="col">Include?</th>
-        <th scope="col">Steam ID</th>
+        <th scope="col">{{ $t('mods.table.modname') }}</th>
+        <th scope="col">{{ $t('mods.table.include') }}</th>
+        <th scope="col">{{ $t('mods.table.steam_id') }}</th>
       </tr>
     </thead>
     <tbody>
@@ -32,26 +32,27 @@
 </template>
 
 <script>
-import * as mods from './mods'
+import * as mods from '@/util/mods';
 
 export default {
-  name: "EffectiveMods",
+  name: 'ModsTable',
   props: {
     mods: {
       type: Array,
       default: () => [],
-    }
+    },
   },
   methods: {
     isOptional(mod) {
-      return mods.isOptional(mod)
+      return mods.isOptional(mod);
     },
     getModState(mod) {
-      if (!this.isOptional(mod))
-        return true
+      if (!this.isOptional(mod)) {
+        return true;
+      }
 
-      return mod.isEnabled
-    }
-  }
-}
+      return mod.isEnabled;
+    },
+  },
+};
 </script>
