@@ -1,11 +1,7 @@
 <template>
   <div id="app">
-    <b-navbar toggleable="lg" type="dark" variant="dark">
+    <b-navbar type="dark" variant="dark">
       <b-navbar-brand class="logo">ArmaForces</b-navbar-brand>
-
-      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
-      <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <!-- Download -->
           <b-nav-item :to="{ name: 'select-preset' }"
@@ -15,6 +11,10 @@
           <b-nav-item :to="{ name: 'modset-create' }"
             active-class="active"
           >{{ $t('nav.create') }}</b-nav-item>
+          <!-- Tools -->
+          <b-nav-item :to="{ name: 'tools' }"
+            active-class="active"
+          >{{ $t('nav.tools') }}</b-nav-item>
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->
@@ -23,7 +23,6 @@
           <!-- <b-nav-item href="https://forum.armaforces.com/">Forum</b-nav-item> -->
           <SettingsDropdown></SettingsDropdown>
         </b-navbar-nav>
-      </b-collapse>
     </b-navbar>
     <main class="container-fluid pt-2">
       <router-view/>

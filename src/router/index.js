@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import ModsetCreate from '@/components/ModsetCreate';
 import PresetSelectPage from '@/pages/PresetSelectPage';
 import PresetDownloadPage from '@/pages/PresetDownloadPage';
+import ToolsPage from '@/pages/ToolsPage';
 
 Vue.use(Router);
 
@@ -24,6 +25,11 @@ export default new Router({
       name: 'download-preset',
       component: PresetDownloadPage,
       props: true,
+    },
+    {
+      path: '/tools',
+      name: 'tools',
+      component: ToolsPage,
     },
   ],
 });
