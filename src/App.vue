@@ -1,20 +1,26 @@
 <template>
   <div id="app">
-    <b-navbar toggleable="lg" type="dark" variant="dark">
+    <b-navbar type="dark" variant="dark">
       <b-navbar-brand class="logo">ArmaForces</b-navbar-brand>
-
-      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
-      <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <!-- Download -->
           <b-nav-item :to="{ name: 'select-preset' }"
             active-class="active"
           >{{ $t('nav.get') }}</b-nav-item>
-          <!-- Create  -->
-          <b-nav-item :to="{ name: 'modset-create' }"
+          <!-- Tools -->
+          <b-nav-item-dropdown
+            :text="$t('nav.tools')"
+            :to="'/tools'"
             active-class="active"
-          >{{ $t('nav.create') }}</b-nav-item>
+          >
+            <b-dropdown-item :to="{ name: 'tools-create' }" active-class="font-weight-bold">
+              {{ $t('nav.create') }}
+            </b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'tools-convert' }" active-class="font-weight-bold ">
+              {{ $t('nav.convert') }}
+            </b-dropdown-item>
+          </b-nav-item-dropdown>
+
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->
@@ -23,7 +29,6 @@
           <!-- <b-nav-item href="https://forum.armaforces.com/">Forum</b-nav-item> -->
           <SettingsDropdown></SettingsDropdown>
         </b-navbar-nav>
-      </b-collapse>
     </b-navbar>
     <main class="container-fluid pt-2">
       <router-view/>
@@ -39,22 +44,3 @@ export default {
   components: { SettingsDropdown },
 };
 </script>
-
-<style lang="scss">
-  html, body, #app {
-    height: 100%;
-  }
-
-  #app > nav {
-    height: 56px;
-  }
-
-  #app > main {
-    overflow-y: scroll;
-    height: calc(100% - 56px);
-  }
-
-  .logo {
-    user-select: none;
-  }
-</style>

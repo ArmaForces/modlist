@@ -19,9 +19,9 @@ const i18n = new VueI18n({
   messages: translations,
 });
 
+const AppClass = Vue.extend(App);
 /* eslint-disable no-new */
-new Vue({
+new AppClass({
   i18n,
   router,
-  render: h => h(App),
 }).$mount('#app');
