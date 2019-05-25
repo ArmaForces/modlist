@@ -1,20 +1,18 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import ModsetCreate from '@/components/ModsetCreate';
-import PresetSelectPage from '@/pages/PresetSelectPage';
-import PresetDownloadPage from '@/pages/PresetDownloadPage';
-import ToolsPage from '@/pages/ToolsPage';
+import {
+  HtmlConvertPage,
+  PresetDownloadPage,
+  PresetSelectPage,
+  ToolsPage,
+} from '@/pages';
 
 Vue.use(Router);
 
 export default new Router({
   routes: [
     { path: '/', redirect: '/select-preset' },
-    {
-      path: '/create',
-      name: 'modset-create',
-      component: ModsetCreate,
-    },
     {
       path: '/select-preset',
       name: 'select-preset',
@@ -28,8 +26,19 @@ export default new Router({
     },
     {
       path: '/tools',
-      name: 'tools',
       component: ToolsPage,
+      children: [
+        {
+          path: '/tools/convert',
+          name: 'tools-convert',
+          component: HtmlConvertPage,
+        },
+        {
+          path: '/tools/create',
+          name: 'tools-create',
+          component: ModsetCreate,
+        },
+      ],
     },
   ],
 });
