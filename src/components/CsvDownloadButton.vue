@@ -39,7 +39,7 @@ export default {
     download(modsArray) {
       const csvText = Papa.unparse(modsArray, {
         quotes: true,
-        delimeter: ';',
+        delimiter: ';',
       });
       const templateB64 = encodeURIComponent(btoa(csvText));
 
