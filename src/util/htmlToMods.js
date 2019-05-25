@@ -1,4 +1,5 @@
 import cheerio from 'cheerio';
+import _unescape from 'lodash/unescape';
 
 /**
  * Extracts Steam Workshop Id from url
@@ -45,7 +46,7 @@ export default function htmlToMods(html) {
         const text = $(node).html();
         // Assign new prop to mod object depending on current node type
         return Object.assign(obj, {
-          [key]: getNodeDataFromText(text, key).trim(),
+          [key.toLowerCase()]: _unescape(getNodeDataFromText(text, key).trim()).replace('&apos;', "'"),
         });
       }, {}),
     );
