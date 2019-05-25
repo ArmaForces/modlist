@@ -5,6 +5,8 @@ export default {
       get: 'Get modset',
       create: 'Create modset',
       current: 'Modset used currently on server',
+      tools: 'Tools',
+      convert: 'HTML to CSV',
     },
     mods: {
       optional: 'Optional',
@@ -14,6 +16,13 @@ export default {
         modname: 'Mod name',
         include: 'Include?',
         steam_id: 'Steam ID',
+        type: 'Type',
+      },
+      types: {
+        optional: 'Optional',
+        required: 'Required',
+        serverside: 'Serverside',
+        clientside: 'Clientside',
       },
     },
     settings: {
@@ -22,12 +31,16 @@ export default {
     },
     search: 'Search',
     download: 'Download',
+    choose_file: 'Choose file...',
+    drop_file: 'Drop file here...',
   },
   pl: {
     nav: {
       get: 'Pobierz modlistę',
       create: 'Utwórz modlistę',
       current: 'Modlista używana obecnie na serwerze',
+      tools: 'Narzędzia',
+      convert: 'HTML to CSV',
     },
     mods: {
       optional: 'Opcjonalne',
@@ -37,6 +50,13 @@ export default {
         modname: 'Nazwa moda',
         include: 'Załączyć?',
         steam_id: 'Steam ID',
+        type: 'Typ',
+      },
+      types: {
+        optional: 'Opcjonalny',
+        required: 'Wymagany',
+        serverside: 'Serwerowy',
+        clientside: 'Kliencki',
       },
     },
     settings: {
@@ -45,5 +65,7 @@ export default {
     },
     search: 'Szukaj',
     download: 'Pobierz',
+    choose_file: 'Wybierz plik...',
+    drop_file: 'Upuść plik tutaj...',
   },
 };
