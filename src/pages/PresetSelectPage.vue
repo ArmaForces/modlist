@@ -32,8 +32,12 @@ export default {
     };
   },
   async mounted() {
-    this.modsets = await api.getDownloadableModsets();
-    this.current = await api.getCurrentModset();
+    const promises = [
+      api.getDownloadableModsets(),
+      api.getCurrentModset(),
+    ];
+
+    [this.modsets, this.current] = await Promise.all(promises);
 
     // current is always listed
     if (this.modsets.findIndex(m => m === this.current) === -1) {
