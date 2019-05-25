@@ -7,14 +7,20 @@
           <b-nav-item :to="{ name: 'select-preset' }"
             active-class="active"
           >{{ $t('nav.get') }}</b-nav-item>
-          <!-- Create  -->
-          <b-nav-item :to="{ name: 'modset-create' }"
-            active-class="active"
-          >{{ $t('nav.create') }}</b-nav-item>
           <!-- Tools -->
-          <b-nav-item :to="{ name: 'tools' }"
+          <b-nav-item-dropdown
+            :text="$t('nav.tools')"
+            :to="'/tools'"
             active-class="active"
-          >{{ $t('nav.tools') }}</b-nav-item>
+          >
+            <b-dropdown-item :to="{ name: 'tools-create' }" active-class="font-weight-bold">
+              {{ $t('nav.create') }}
+            </b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'tools-convert' }" active-class="font-weight-bold ">
+              {{ $t('nav.convert') }}
+            </b-dropdown-item>
+          </b-nav-item-dropdown>
+
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->
@@ -38,22 +44,3 @@ export default {
   components: { SettingsDropdown },
 };
 </script>
-
-<style lang="scss">
-  html, body, #app {
-    height: 100%;
-  }
-
-  #app > nav {
-    height: 56px;
-  }
-
-  #app > main {
-    overflow-y: scroll;
-    height: calc(100% - 56px);
-  }
-
-  .logo {
-    user-select: none;
-  }
-</style>

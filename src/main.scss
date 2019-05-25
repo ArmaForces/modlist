@@ -11,3 +11,24 @@ $btn-border-radius: 0;
 
 @import 'node_modules/bootstrap/scss/bootstrap.scss';
 @import 'node_modules/bootstrap-vue/src/index.scss';
+
+html, body, #app {
+  height: 100%;
+}
+
+#app > nav {
+  height: 56px;
+}
+
+#app > main {
+  overflow-y: scroll;
+  height: calc(100% - 56px);
+}
+
+.logo {
+  user-select: none;
+}
+
+.tab-pane:focus {
+  outline: none;
+};
