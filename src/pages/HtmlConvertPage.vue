@@ -84,8 +84,8 @@ export default {
 
       this.html = await readFile(this.htmlFile);
     },
-    html() {
-      const modsArray = htmlToMods(this.html);
+    async html() {
+      const modsArray = await htmlToMods(this.html);
       this.mods = this.prepareMods(modsArray);
     },
   },

@@ -1,4 +1,3 @@
-import cheerio from 'cheerio';
 import _unescape from 'lodash/unescape';
 
 /**
@@ -33,7 +32,8 @@ function getNodeDataFromText(text, type) {
  *
  * @param {String} html Launcher HTML contents
  */
-export default function htmlToMods(html) {
+export default async function htmlToMods(html) {
+  const cheerio = await import(/* webpackChunkName: "cheerio" */ 'cheerio');
   const $ = cheerio.load(html);
   const modContainers = $('[data-type=ModContainer]');
 
