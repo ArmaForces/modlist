@@ -2,6 +2,7 @@
   <b-button
     @click="download(prepareMods(mods))"
     size="sm"
+    class="m-2"
     variant="primary"
   >
     {{ $t('download') }}
@@ -32,8 +33,8 @@ export default {
           id: x.link,
           name: x.displayname,
           is_serverside: this.toCsvBool(x.type === mods.TYPES.SERVERSIDE),
-          is_optional: this.toCsvBool(x.type === mods.TYPES.OPTIONAL),
-          is_map: this.toCsvBool(x.type === mods.TYPES.CLIENTSIDE),
+          is_optional: this.toCsvBool(x.type === mods.TYPES.CLIENTSIDE),
+          is_map: this.toCsvBool(x.type === mods.TYPES.OPTIONAL),
         }));
     },
     toCsvBool: x => (x ? 'True' : 'False'),

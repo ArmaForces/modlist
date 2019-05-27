@@ -1,8 +1,9 @@
 <template>
   <b-dropdown split
-    size="sm"
     @click="download(clientMods)"
-    :text="$t('download')" class="m-2"
+    size="sm"
+    :text="$t('download')"
+    class="m-2"
     variant="primary"
     split-variant="primary"
   >
