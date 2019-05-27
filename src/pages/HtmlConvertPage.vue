@@ -1,7 +1,7 @@
 <template>
-  <b-container>
+  <div class="container">
     <div class="row">
-      <div class="col-auto">
+      <div class="col-">
         <b-form-file
           v-model="htmlFile"
           :state="Boolean(htmlFile)"
@@ -10,25 +10,47 @@
           :drop-placeholder="$t('drop_file')"
         ></b-form-file>
       </div>
-      <div class="col-auto ml-auto">
-        <CsvDownloadButton :mods="mods"></CsvDownloadButton>
-      </div>
-      <div class="col-auto">
-        <b-form-input
-          v-model="search"
-          :placeholder="$t('search')"
-        ></b-form-input>
-      </div>
     </div>
     <div class="row">
-      <ModsCsvTable
-        :mods="filter(mods)"
-        @set-mod-type="setModType"
-        @new-mod="addMod"
-        @remove-mod="removeMod"
-      ></ModsCsvTable>
+      <b-tabs class="col">
+        <!-- Yours tab -->
+        <b-tab>
+          <template slot="title">
+            {{ $t('mods.yours') }}
+            <b-badge pill variant="secondary">{{ mods.length }}</b-badge>
+          </template>
+          <ModsCsvTable
+            :mods="filter(mods)"
+            @set-mod-type="setModType"
+            @new-mod="addMod"
+            @remove-mod="removeMod"
+          ></ModsCsvTable>
+        </b-tab>
+        <!-- Default optional tab -->
+        <b-tab pills>
+          <template slot="title">
+            {{ $t('mods.default_optional') }}
+            <b-badge pill variant="secondary">{{ 10 }}/{{ 10 }}</b-badge>
+          </template>
+          Default optionals here
+        </b-tab>
+        <!-- Searchbar -->
+        <template slot="tabs">
+          <li class="nav-item align-self-center ml-auto">
+            <b-form-input
+              v-model="search"
+              :placeholder="$t('search')"
+              size="sm"
+              class="mr-sm-2 d-md-block d-none"
+            ></b-form-input>
+          </li>
+          <li class="nav-item align-self-center">
+            <CsvDownloadButton :mods="mods"></CsvDownloadButton>
+          </li>
+        </template>
+      </b-tabs>
     </div>
-  </b-container>
+  </div>
 </template>
 
 <script>
@@ -62,8 +84,9 @@ export default {
       this.mods = this.prepareMods(this.mods);
     },
     filter(modsArr) {
-      return modsArr.filter(m =>
-        m.displayname.toLowerCase().indexOf(this.search.toLowerCase()) !== -1,
+      return modsArr.filter(
+        m =>
+          m.displayname.toLowerCase().indexOf(this.search.toLowerCase()) !== -1,
       );
     },
     addMod(mod) {

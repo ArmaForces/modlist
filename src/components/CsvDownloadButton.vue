@@ -1,6 +1,7 @@
 <template>
   <b-button
     @click="download(prepareMods(mods))"
+    size="sm"
     variant="primary"
   >
     {{ $t('download') }}
