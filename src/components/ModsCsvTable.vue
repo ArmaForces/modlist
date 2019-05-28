@@ -1,10 +1,31 @@
 <template>
   <table class="table table-dark">
+    <!-- TODO make it nicer -->
+    <b-popover target="csv-type-help" placement="bottom" triggers="hover" >
+      <template slot="title">
+        <div style="color: black;">
+          Help
+        </div>
+      </template>
+      <div style="color: black;">
+        <strong>Required</strong> - must be loaded by client and server
+        <br/>
+        <strong>Optional</strong> - loaded by server, allowed to be loaded by client (eg. maps)
+        <br/>
+        <strong>Clientside</strong> - allowed to be loaded by client
+        <br/>
+        <strong>Serverside</strong> - loaded by server only
+      </div>
+    </b-popover>
+
     <thead>
       <tr>
         <th scope="col">#</th>
         <th scope="col">{{ $t('mods.table.modname') }}</th>
-        <th scope="col">{{ $t('mods.table.type') }}</th>
+        <th scope="col">
+          {{ $t('mods.table.type') }}
+          <span id="csv-type-help" class="float-right">(?)</span>
+        </th>
         <th scope="col">{{ $t('mods.table.steam_id') }}</th>
         <th scope="col"></th>
       </tr>

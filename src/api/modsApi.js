@@ -1,7 +1,8 @@
 import Papa from 'papaparse';
+import _filter from 'lodash/filter';
 
 // eslint-disable-next-line
-let BASE_URL = 'http://armaforces.ddns.net:8888/';
+let BASE_URL = 'http://server.armaforces.com:8888/';
 if (process.env.NODE_ENV !== 'production') {
   // BASE_URL = 'http://localhost:8080/';
 }
@@ -17,7 +18,8 @@ export const getModsetData = modset =>
       header: true,
       comments: '#',
       quoteChar: '"',
-    }));
+    }))
+    .then(x => x.data);
 
 export const getCurrentModset = () =>
   fetch(`${BASE_URL}/current.txt?${Date.now()}`)
@@ -29,3 +31,22 @@ export const getCurrentModset = () =>
       }
       return current.trim();
     });
+
+export const getDefaultClientside = () =>
+  fetch(`${BASE_URL}/modsets/special.csv?${Date.now()}`)
+    .then(resp => resp.text())
+    .then(csvText => Papa.parse(csvText.trim(), {
+      header: true,
+      comments: '#',
+      quoteChar: '"',
+    }))
+    .then(x => x.data)
+    .then(x => _filter(x, 'id'))
+    .then(m =>
+      m.map(x => ({
+        ...x,
+        is_optional: 'True',
+        is_serverside: 'False',
+        is_map: 'False',
+      })),
+    );

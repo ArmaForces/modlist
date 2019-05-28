@@ -1,7 +1,5 @@
 <template>
-  <div v-if="!modsets.length" style="display:flex; justify-content: center;">
-    <b-spinner type="grow" variant="success" style="width: 5rem; height: 5rem;"></b-spinner>
-  </div>
+  <Loader v-if="!modsets.length"></Loader>
   <!-- Modsets List -->
   <div v-else class="row">
     <div class="col-12 d-flex justify-content-center">
@@ -21,10 +19,11 @@
 <script>
 import * as api from '@/api/modsApi';
 import PresetSelectButton from '@/components/PresetSelectButton';
+import Loader from '@/components/Loader';
 
 export default {
   name: 'SelectPresetPage',
-  components: { PresetSelectButton },
+  components: { PresetSelectButton, Loader },
   data() {
     return {
       modsets: [],

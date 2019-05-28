@@ -12,6 +12,8 @@ export default {
       optional: 'Optional',
       required: 'Required',
       select: 'Select modlist',
+      yours: 'Your mods',
+      default_clientside: 'Default clientside',
       table: {
         modname: 'Mod name',
         include: 'Include?',
@@ -46,6 +48,8 @@ export default {
       optional: 'Opcjonalne',
       required: 'Wymagane',
       select: 'Wybierz modlistę',
+      yours: 'Twoje mody',
+      default_clientside: 'Domyślne klienckie',
       table: {
         modname: 'Nazwa moda',
         include: 'Załączyć?',

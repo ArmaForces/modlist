@@ -62,9 +62,8 @@ export default {
   },
   methods: {
     async getModset(modset) {
-      const parsedData = await api.getModsetData(modset);
-      this.mods = this.prepareMods(parsedData.data);
-      this.parsingErrors = parsedData.errors;
+      const modsetMods = await api.getModsetData(modset);
+      this.mods = this.prepareMods(modsetMods);
     },
     prepareMods(modsArray) {
       return modsArray
