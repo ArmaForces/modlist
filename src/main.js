@@ -2,6 +2,8 @@
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
 import BootstrapVue from 'bootstrap-vue';
+import * as Sentry from '@sentry/browser';
+import * as Integrations from '@sentry/integrations';
 import App from './App';
 import router from './router';
 import translations from './translations';
@@ -25,3 +27,11 @@ new AppClass({
   i18n,
   router,
 }).$mount('#app');
+
+// Enable Sentry in production mode
+if (process.env.NODE_ENV === 'production') {
+  Sentry.init({
+    dsn: 'https://d8b4dcf8d4e5451ba30f11e382278bda@sentry.io/1471961',
+    integrations: [new Integrations.Vue({ Vue, attachProps: true })],
+  });
+}
