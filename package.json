@@ -11,6 +11,8 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "@sentry/browser": "^5.3.0",
+    "@sentry/integrations": "^5.3.1",
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0-rc.18",
     "cheerio": "^1.0.0-rc.3",
