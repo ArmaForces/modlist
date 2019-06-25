@@ -2,7 +2,7 @@ import Papa from 'papaparse';
 import _filter from 'lodash/filter';
 
 // eslint-disable-next-line
-let BASE_URL = 'http://server.armaforces.com:8888/';
+let BASE_URL = 'https://server.armaforces.com:8888/';
 if (process.env.NODE_ENV !== 'production') {
   // BASE_URL = 'http://localhost:8080/';
 }
