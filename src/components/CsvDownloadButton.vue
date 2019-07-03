@@ -12,6 +12,7 @@
 <script>
 import Papa from 'papaparse';
 import * as mods from '@/util/mods';
+import forcedMods from '@/util/forcedMods';
 
 
 export default {
@@ -39,7 +40,7 @@ export default {
     },
     toCsvBool: x => (x ? 'True' : 'False'),
     download(modsArray) {
-      const csvText = Papa.unparse(modsArray, {
+      const csvText = Papa.unparse([...modsArray, ...forcedMods], {
         quotes: true,
         delimiter: ';',
       });
