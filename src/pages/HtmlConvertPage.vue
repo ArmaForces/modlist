@@ -41,6 +41,7 @@
           </template>
           <ModsTable
             :mods="filter(defaultClientside)"
+            :toggleAll="true"
             @update-mod-state="enableDefaultClientside"
           ></ModsTable>
         </b-tab>

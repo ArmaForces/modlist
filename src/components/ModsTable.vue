@@ -4,7 +4,16 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">{{ $t('mods.table.modname') }}</th>
-        <th scope="col">{{ $t('mods.table.include') }}</th>
+        <th scope="col">
+          {{ $t('mods.table.include') }}
+          <b-form-checkbox
+            v-if="toggleAll"
+            class="d-inline-block"
+            :checked="allChecked"
+            :indeterminate="isMixedState"
+            @input="onCheckAll"
+          ></b-form-checkbox>
+        </th>
         <th scope="col">{{ $t('mods.table.steam_id') }}</th>
       </tr>
     </thead>
@@ -17,7 +26,7 @@
           <b-form-checkbox
             :checked="mod.isEnabled"
             :disabled="!isOptional(mod)"
-            @change="$emit('update-mod-state', { enabled: $event, id: mod.id })"
+            @change="toggleMod($event, mod)"
             name="check-button"
             switch
           ></b-form-checkbox>
@@ -41,6 +50,15 @@ export default {
       type: Array,
       default: () => [],
     },
+    toggleAll: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  data() {
+    return {
+      allChecked: true,
+    };
   },
   methods: {
     isOptional(mod) {
@@ -52,6 +70,21 @@ export default {
       }
 
       return mod.isEnabled;
+    },
+    toggleMod(state, mod) {
+      this.$emit('update-mod-state', { enabled: state, id: mod.id });
+    },
+    onCheckAll(state) {
+      this.mods.forEach((x) => {
+        this.toggleMod(state, x);
+      });
+
+      this.allChecked = state;
+    },
+  },
+  computed: {
+    isMixedState() {
+      return this.mods.some(x => x.isEnabled) && this.mods.some(x => !x.isEnabled);
     },
   },
 };
