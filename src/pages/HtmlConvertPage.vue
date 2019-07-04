@@ -40,7 +40,7 @@
             </b-badge>
           </template>
           <ModsTable
-            :mods="defaultClientside"
+            :mods="filter(defaultClientside)"
             @update-mod-state="enableDefaultClientside"
           ></ModsTable>
         </b-tab>
@@ -112,9 +112,10 @@ export default {
     },
     filter(modsArr) {
       return modsArr.filter(
-        m =>
-          m.displayname.toLowerCase().indexOf(this.search.toLowerCase()) !== -1,
-      );
+        (m) => {
+          const name = m.displayname || m.name;
+          return name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1;
+        });
     },
     addMod(mod) {
       this.userMods.unshift(mod);
