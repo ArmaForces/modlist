@@ -1,6 +1,7 @@
 
 export default {
   en: {
+    error_occured: 'Error occured',
     nav: {
       get: 'Get modset',
       create: 'Create modset',
@@ -26,6 +27,9 @@ export default {
         serverside: 'Serverside',
         clientside: 'Clientside',
       },
+      errors: {
+        no_modset: 'There is no modset with name',
+      },
     },
     settings: {
       clear: 'Clear saved data',
@@ -37,6 +41,7 @@ export default {
     drop_file: 'Drop file here...',
   },
   pl: {
+    error_occured: 'Wystąpił błąd',
     nav: {
       get: 'Pobierz modlistę',
       create: 'Utwórz modlistę',
@@ -61,6 +66,9 @@ export default {
         required: 'Wymagany',
         serverside: 'Serwerowy',
         clientside: 'Kliencki',
+      },
+      errors: {
+        no_modset: 'Nie ma modsetu o nazwie',
       },
     },
     settings: {

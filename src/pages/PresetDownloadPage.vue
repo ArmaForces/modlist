@@ -62,8 +62,22 @@ export default {
   },
   methods: {
     async getModset(modset) {
-      const modsetMods = await api.getModsetData(modset);
-      this.mods = this.prepareMods(modsetMods);
+      try {
+        const modsetMods = await api.getModsetData(modset);
+        this.mods = this.prepareMods(modsetMods);
+      } catch (e) {
+        if (e.message === '404') {
+          // TODO mixin
+          this.$bvToast.toast(`${this.$t('mods.errors.no_modset')}: ${modset}`, {
+            title: this.$t('error_occured'),
+            variant: 'danger',
+            toaster: 'b-toaster-top-right',
+            solid: true,
+          });
+        } else {
+          throw e;
+        }
+      }
     },
     prepareMods(modsArray) {
       return modsArray
