@@ -13,6 +13,12 @@ export const getDownloadableModsets = () =>
 
 export const getModsetData = modset =>
   fetch(`${BASE_URL}/modsets/${modset}.csv?${Date.now()}`)
+    .then((resp) => {
+      if (resp.status === 404) {
+        throw new Error(resp.status);
+      }
+      return resp;
+    })
     .then(resp => resp.text())
     .then(csvText => Papa.parse(csvText.trim(), {
       header: true,
