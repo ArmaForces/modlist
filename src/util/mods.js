@@ -34,22 +34,22 @@ export const isEnabled = id => JSON.parse(localStorage.getItem(`mod_${id}`)) ===
 /**
  * @param {Object<Mod>} mod Mod object
  */
-export const isOptional = mod => mod.is_optional === 'True';
+export const isOptional = mod => mod.is_optional.toLowerCase() === 'true';
 
 /**
  * Return client side mods from array
  * @param {Array<Mod>} mods Array of mods
  */
-export const filterClient = mods => mods.filter(x => x.is_serverside !== 'True');
+export const filterClient = mods => mods.filter(x => x.is_serverside.toLowerCase() !== 'true');
 
 /**
  * Return required mods from array
  * @param {Array<Mod>} mods Array of mods
  */
-export const filterRequired = mods => mods.filter(x => x.is_optional !== 'True');
+export const filterRequired = mods => mods.filter(x => x.is_optional.toLowerCase() !== 'true');
 
 /**
  * Return optional mods from array
  * @param {Array<Mod>} mods Array of mods
  */
-export const filterOptional = mods => mods.filter(x => x.is_optional === 'True');
+export const filterOptional = mods => mods.filter(x => x.is_optional.toLowerCase() === 'true');
