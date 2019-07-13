@@ -57,6 +57,7 @@
           <b-button
             size="sm"
             variant="outline-success"
+            :disabled="!(newmod.displayname && newmod.link)"
             @click="addMod"
           >+</b-button>
         </td>
