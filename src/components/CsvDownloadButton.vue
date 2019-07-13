@@ -40,7 +40,7 @@ export default {
     },
     toCsvBool: x => (x ? 'True' : 'False'),
     download(modsArray) {
-      const csvText = Papa.unparse([...modsArray, ...forcedMods], {
+      const csvText = Papa.unparse([...modsArray, ...this.prepareMods(forcedMods)], {
         quotes: true,
         delimiter: ';',
       });

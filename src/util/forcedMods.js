@@ -1,10 +1,9 @@
+import { TYPES } from '@/util/mods';
 
 export default [
   {
-    id: 'local',
-    name: '@R3',
-    is_serverside: true,
-    is_optional: false,
-    is_map: false,
+    link: 'local',
+    displayname: '@R3',
+    type: TYPES.SERVERSIDE,
   },
 ];
