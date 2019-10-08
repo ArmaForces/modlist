@@ -6,7 +6,7 @@
       <h2>{{ $t('mods.select') }}</h2>
     </div>
     <div class="col-12 d-flex justify-content-center">
-      <div>
+      <div class="container d-flex flex-wrap justify-content-center">
         <PresetSelectButton v-for="modset in modsets" :key="modset"
           :modset="modset"
           :is-current="modset === current"
