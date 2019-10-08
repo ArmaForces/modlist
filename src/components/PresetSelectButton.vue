@@ -3,7 +3,7 @@
       block
       v-b-tooltip.hover.right.d500="isCurrent ? $t('nav.current') : ''"
       :variant="isCurrent ? 'primary' : 'secondary'"
-      class="text-capitalize text-white"
+      class="text-capitalize text-white w-25 m-2"
       :class="{ 'font-weight-bold': isCurrent }"
 
       :to="{ name: 'download-preset', params: { modset, },}"
