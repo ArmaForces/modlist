@@ -2,7 +2,9 @@
   <div id="app">
     <b-navbar type="dark" variant="dark">
       <div class="container">
-        <b-navbar-brand class="logo">ArmaForces</b-navbar-brand>
+          <b-navbar-brand class="logo" href="https://armaforces.com">
+            ArmaForces
+          </b-navbar-brand>
           <b-navbar-nav>
             <!-- Download -->
             <b-nav-item :to="{ name: 'select-preset' }"
