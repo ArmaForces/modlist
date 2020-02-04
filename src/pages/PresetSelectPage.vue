@@ -6,8 +6,15 @@
       <h2>{{ $t('mods.select') }}</h2>
     </div>
     <div class="col-12 d-flex justify-content-center">
+      <b-form-input v-model="search"
+          size="sm"
+          class="w-auto d-md-block"
+          :placeholder="$t('search')"
+        ></b-form-input>
+    </div>
+    <div class="col-12 d-flex justify-content-center">
       <div class="container d-flex flex-wrap justify-content-center">
-        <PresetSelectButton v-for="modset in modsets" :key="modset"
+        <PresetSelectButton v-for="modset in filter(modsets)" :key="modset"
           :modset="modset"
           :is-current="modset === current"
         ></PresetSelectButton>
@@ -28,6 +35,7 @@ export default {
     return {
       modsets: [],
       current: '',
+      search: '',
     };
   },
   async mounted() {
@@ -45,6 +53,11 @@ export default {
 
     console.log('current', this.current);
     console.log('downloadable', this.modsets);
+  },
+  methods: {
+    filter(modsetsArr) {
+      return modsetsArr.filter(m => m.toLowerCase().indexOf(this.search.toLowerCase()) !== -1);
+    },
   },
   computed: {
     clientMods() {
