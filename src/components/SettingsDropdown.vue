@@ -6,7 +6,7 @@
   >
     <template slot="button-content">⚙</template>
     <b-dropdown-item @click="clearStorage()">{{ $t('settings.clear') }}</b-dropdown-item>
-    <b-dropdown-item @click="switchLang()">{{ $i18n.locale }}</b-dropdown-item>
+    <b-dropdown-item @click="switchLang()">{{ nextLang }}</b-dropdown-item>
   </b-dropdown>
 </template>
 
