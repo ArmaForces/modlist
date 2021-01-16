@@ -6,13 +6,19 @@ import {
   PresetDownloadPage,
   PresetSelectPage,
   ToolsPage,
+  RedirectPage,
 } from '@/pages';
 
 Vue.use(Router);
 
 export default new Router({
   routes: [
-    { path: '/', redirect: '/select-preset' },
+    { path: '/', redirect: '/redirect' },
+    {
+      path: '/redirect',
+      name: 'redirect',
+      component: RedirectPage,
+    },
     {
       path: '/select-preset',
       name: 'select-preset',

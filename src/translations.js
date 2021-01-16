@@ -39,6 +39,12 @@ export default {
     download: 'Download',
     choose_file: 'Choose file...',
     drop_file: 'Drop file here...',
+    redirect: {
+      header: 'This page is deprecated, please use',
+      redirect: 'You will be redirected to new page in few seconds.',
+      stay: 'Stay on this site',
+      go_to_new: 'Go to new website',
+    },
   },
   pl: {
     error_occured: 'Wystąpił błąd',
@@ -79,5 +85,11 @@ export default {
     download: 'Pobierz',
     choose_file: 'Wybierz plik...',
     drop_file: 'Upuść plik tutaj...',
+    redirect: {
+      header: 'Ta strona jest już nieużywana, proszę użyj',
+      redirect: 'Zostaniesz przekierowany do nowej strony za parę sekund.',
+      stay: 'Pozostań na tej stronie',
+      go_to_new: 'Przejdź do nowej strony',
+    },
   },
 };
