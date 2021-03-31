@@ -35,32 +35,14 @@
 </template>
 
 <script>
-const REDIRECT_TIME = 5000;
-const REDIRECT_TICK = 100;
-
 export default {
   data() {
     return {
-      redirectTime: REDIRECT_TIME,
-      redirectValue: REDIRECT_TIME,
       redirectTarget: 'https://armaforces.com/mod-list/select',
-      interval: null,
     };
   },
   mounted() {
-    this.redirectValue = this.redirectTime;
-    this.interval = setInterval(this.onTick, REDIRECT_TICK);
-  },
-  methods: {
-    onTick() {
-      if (this.redirectValue <= 0) {
-        clearInterval(this.interval);
-        window.location = this.redirectTarget;
-        return;
-      }
-
-      this.redirectValue -= REDIRECT_TICK;
-    },
+    window.location = this.redirectTarget;
   },
 };
 </script>
